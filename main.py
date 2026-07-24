@@ -1,7 +1,42 @@
 import asyncio
+import os  # Импортируем стандартный модуль os
 import discord
 from discord import app_commands
 from discord.ext import commands
+from dotenv import load_dotenv  # Импортируем функцию загрузки .env
+
+# Загружаем переменные из файла .env
+load_dotenv()
+
+# Достаем токен из окружения
+TOKEN = os.getenv("DISCORD_TOKEN")
+
+# Инициализация бота
+intents = discord.Intents.default()
+intents.message_content = True
+intents.guilds = True
+
+bot = commands.Bot(command_prefix="!", intents=intents)
+
+# ... ТУТ ОСТАЛЬНОЙ КОД ВАШЕГО БОТА (TicketModal, TicketView, setup_tickets и т.д.) ...
+
+
+# Событие старта
+@bot.event
+async def on_ready():
+    bot.add_view(TicketView())
+    bot.add_view(CloseTicketView())
+    print(f"Бот {bot.user} успешно запущен!")
+
+
+# Запуск бота с проверкой токена
+if __name__ == "__main__":
+    if not TOKEN:
+        print(
+            "❌ ОШИБКА: Токен не найден! Проверьте, создан ли файл .env и указан ли в нем DISCORD_TOKEN."
+        )
+    else:
+        bot.run(TOKEN)
 
 # Инициализация бота
 intents = discord.Intents.default()
