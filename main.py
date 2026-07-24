@@ -224,7 +224,7 @@ async def setup_tickets(ctx: commands.Context):
 
 
 # Токен вашего бота (ЗАМЕНИТЕ НА НОВЫЙ ТОКЕН ИЗ DISCORD DEVELOPER PORTAL)
-TOKEN = "ВАШ_НОВЫЙ_ТОКЕН_ЗДЕСЬ"
+TOKEN = "MTUzMDAwMTkxNzMxNTM4NzQ2Mw.GHTSxV.55jukT-TrFaIgQSGiW3mTHAeoW6olz4ZLRoveA"
 
 if __name__ == "__main__":
     bot.run(TOKEN)
